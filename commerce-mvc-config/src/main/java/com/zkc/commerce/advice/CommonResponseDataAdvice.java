@@ -30,7 +30,7 @@ public class CommonResponseDataAdvice implements ResponseBodyAdvice<Object> {
 			return false;
 		}
 		
-		return false;
+		return true;
 	}
 	
 	/**

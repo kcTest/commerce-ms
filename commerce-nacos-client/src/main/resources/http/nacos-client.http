@@ -1,0 +1,4 @@
+### 根据service id 获取服务所有的实例信息
+GET  http://127.0.0.1:1003/commerce-nc/nacos-client/service-instance
+Accept: application/json
+

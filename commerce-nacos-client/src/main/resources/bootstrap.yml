@@ -1,0 +1,22 @@
+server:
+  port: 1003
+  servlet:
+    context-path: /commerce-nc
+spring:
+  application:
+    name: commerce-nc
+  cloud:
+    nacos:
+      discovery:
+        server-addr: centos007:1002
+        namespace: 468ff251-10b0-44f3-9bdf-b098ee07bf02
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+      
+        
