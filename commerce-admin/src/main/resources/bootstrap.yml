@@ -1,0 +1,33 @@
+server:
+  port: 1004
+  servlet:
+    context-path: /admin
+spring:
+  boot:
+    admin:
+      monitor:
+        default-timeout: 60000
+        status-interval: 15000
+        status-lifetime: 15000
+  security:
+    user:
+      name: admin
+      password: 123456xxx
+  application:
+    name: commerce-admin
+  cloud:
+    nacos:
+      discovery:
+        server-addr: centos007:1002
+        namespace: 468ff251-10b0-44f3-9bdf-b098ee07bf02
+  thymeleaf:
+    check-template: false
+    check-template-location: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*' #默认 health info
+  endpoint:
+    health:
+      show-details: always

@@ -19,6 +19,7 @@
         <module>commerce-common</module>
         <module>commerce-mvc-config</module>
         <module>commerce-nacos-client</module>
+        <module>commerce-admin</module>
     </modules>
 
 
@@ -27,6 +28,8 @@
         <lombok.version>1.18.26</lombok.version>
         <hutool.version>5.8.12</hutool.version>
         <jjwt.version>0.11.5</jjwt.version>
+        <admin-starter-server.version>3.0.3</admin-starter-server.version>
+
         <mybatisplus.version>3.5.3.1</mybatisplus.version>
         <springdoc-openapi-ui.version>2.0.4</springdoc-openapi-ui.version>
         <swagger-ui.version>4.17.1</swagger-ui.version>
@@ -41,7 +44,6 @@
         <commons-io.version>2.11.0</commons-io.version>
         <authorization-server.version>1.0.1</authorization-server.version>
         <spring-security-config.version>6.0.1</spring-security-config.version>
-        <kaptcha.version>2.3.2</kaptcha.version>
         <starter-data-redis.version>3.0.4</starter-data-redis.version>
         <data-redis.version>3.0.3</data-redis.version>
         <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
@@ -184,6 +186,11 @@
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-redis</artifactId>
                 <version>${data-redis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>${admin-starter-server.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
