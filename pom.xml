@@ -20,15 +20,17 @@
         <module>commerce-mvc-config</module>
         <module>commerce-nacos-client</module>
         <module>commerce-admin</module>
+        <module>commerce-auth-center</module>
     </modules>
 
 
     <properties>
         <spring-boot.version>3.0.5</spring-boot.version>
         <lombok.version>1.18.26</lombok.version>
-        <hutool.version>5.8.12</hutool.version>
+        <hutool.version>5.8.18</hutool.version>
         <jjwt.version>0.11.5</jjwt.version>
         <admin-starter-server.version>3.0.3</admin-starter-server.version>
+        <screw-core.version>1.0.5</screw-core.version>
 
         <mybatisplus.version>3.5.3.1</mybatisplus.version>
         <springdoc-openapi-ui.version>2.0.4</springdoc-openapi-ui.version>
@@ -191,6 +193,11 @@
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-starter-server</artifactId>
                 <version>${admin-starter-server.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.smallbun.screw</groupId>
+                <artifactId>screw-core</artifactId>
+                <version>${screw-core.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

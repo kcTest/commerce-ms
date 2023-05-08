@@ -6,9 +6,11 @@ spring:
   boot:
     admin:
       monitor:
-        default-timeout: 60000
+        default-timeout: 15000
         status-interval: 15000
         status-lifetime: 15000
+      ui:
+        title: 服务监控
   security:
     user:
       name: admin
@@ -20,6 +22,11 @@ spring:
       discovery:
         server-addr: centos007:1002
         namespace: 468ff251-10b0-44f3-9bdf-b098ee07bf02
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+          user.name: admin
+          user.password: 123456xxx
   thymeleaf:
     check-template: false
     check-template-location: false
