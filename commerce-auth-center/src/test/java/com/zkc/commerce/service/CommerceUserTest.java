@@ -23,7 +23,7 @@ public class CommerceUserTest {
 	public void createUserRecord() {
 		CommerceUser commerceUser = new CommerceUser();
 		commerceUser.setUsername("test");
-		commerceUser.setPassword(MD5.create().digestHex16("123456xxx"));
+		commerceUser.setPassword(MD5.create().digestHex("123456xxx"));
 		commerceUser.setExtraInfo("{}");
 		log.info("添加用户：[{}]", JSON.toJSONString(commerceUserDao.save(commerceUser)));
 	}

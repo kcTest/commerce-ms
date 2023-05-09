@@ -1,5 +1,6 @@
 package com.zkc.commerce.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.zkc.commerce.constant.AuthConstant;
 import com.zkc.commerce.constant.CommonConstant;
 import com.zkc.commerce.dao.CommerceUserDao;
@@ -65,7 +66,7 @@ public class IJWTServiceImpl implements IJWTService {
 		
 		return Jwts.builder()
 				//填充payload K,V
-				.claim(CommonConstant.JET_USER_INFO_KEY, loginUserInfo)
+				.claim(CommonConstant.JET_USER_INFO_KEY, JSON.toJSONString(loginUserInfo))
 				.setId(UUID.randomUUID().toString())
 				.setExpiration(expireDate)
 				//指定私钥和加密算法 

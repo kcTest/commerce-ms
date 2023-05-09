@@ -1,0 +1,17 @@
+### 登录后获取token
+POST http://127.0.0.1:1005/auth/authority/token
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "e087dae60e744ea80722b785a75adbb7"
+}
+
+### 注册后获取token
+POST http://127.0.0.1:1005/auth/authority/register
+Content-Type: application/json
+
+{
+  "username": "test2",
+  "password": "e087dae60e744ea80722b785a75adbb7"
+}
