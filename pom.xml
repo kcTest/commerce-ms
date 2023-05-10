@@ -21,6 +21,7 @@
         <module>commerce-nacos-client</module>
         <module>commerce-admin</module>
         <module>commerce-auth-center</module>
+        <module>commerce-gateway</module>
     </modules>
 
 

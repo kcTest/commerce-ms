@@ -10,6 +10,9 @@ spring:
       discovery:
         server-addr: centos007:1002
         namespace: 468ff251-10b0-44f3-9bdf-b098ee07bf02
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
 management:
   endpoints:
     web:

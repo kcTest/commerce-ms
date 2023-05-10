@@ -1,0 +1,38 @@
+server:
+  port: 1006
+  servlet:
+    context-path: /gw
+spring:
+  application:
+    name: commerce-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: centos007:1002
+        namespace: 468ff251-10b0-44f3-9bdf-b098ee07bf02
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+    #    gateway:
+    #      routes: 
+    #        - id: path_route #路由id
+    #          uri: 127.0.01:8080/user/{id} #匹配后路由地址
+    #          predicates: #断言
+    #            - Path=/user/{id}
+  main:
+    allow-bean-definition-overriding: true #可能存在重名
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+#这个地方独立配置 是网关的数据 代码GatewayConfig.java中读取监听
+nacos:
+  gateway:
+    route:
+      config:
+        data-id: commerce-gateway-router
+        group: commerce
