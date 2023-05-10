@@ -18,25 +18,41 @@ public class GatewayConfig {
 	/**
 	 * nacos服务器地址
 	 */
-	@Value("${spring.cloud.nacos.discovery.server-addr}")
 	public static String NACOS_SERER_ADDR;
 	
 	/**
 	 * 命名空间
 	 */
-	@Value("${spring.cloud.nacos.discovery.namespace}")
 	public static String NACOS_NAMESPACE;
 	
 	/**
 	 * data-id
 	 */
-	@Value("${nacos.gateway.route.config.data-id}")
 	public static String NACOS_ROUTE_DATA_ID;
 	
 	/**
 	 * nacos分组id
 	 */
-	@Value("${nacos.gateway.route.config.group}")
 	public static String NACOS_ROUTE_GROUP;
+	
+	@Value("${spring.cloud.nacos.discovery.server-addr}")
+	public void setNacosServerAdder(String nacosServerAddr) {
+		NACOS_SERER_ADDR = nacosServerAddr;
+	}
+	
+	@Value("${spring.cloud.nacos.discovery.namespace}")
+	public void setNacosNamespace(String nacosNamespace) {
+		NACOS_NAMESPACE = nacosNamespace;
+	}
+	
+	@Value("${nacos.gateway.route.config.data-id}")
+	public void setNacosRouteDataId(String nacosRouteDataId) {
+		NACOS_ROUTE_DATA_ID = nacosRouteDataId;
+	}
+	
+	@Value("${nacos.gateway.route.config.group}")
+	public void setNacosRouteGroup(String nacosRouteGroup) {
+		NACOS_ROUTE_GROUP = nacosRouteGroup;
+	}
 	
 }

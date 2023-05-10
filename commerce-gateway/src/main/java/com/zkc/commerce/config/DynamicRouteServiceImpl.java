@@ -47,7 +47,7 @@ public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
 	 * 增加路由定义
 	 */
 	public String addRouteDefinition(RouteDefinition routeDefinition) {
-		log.info("网关增加路由定义：[{}]", routeDefinition);
+		log.info("增加网关路由定义：[{}]", routeDefinition);
 		
 		//保存路由定义并发布
 		routeDefinitionWriter.save(Mono.just(routeDefinition)).subscribe();
@@ -61,7 +61,7 @@ public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
 	 * 更新路由
 	 */
 	public String updateList(List<RouteDefinition> newDefinitions) {
-		log.info("网关更新路由：[{}]", newDefinitions);
+		log.info("更新网关路由：[{}]", newDefinitions);
 		
 		//先拿到当前gateway中存储的路由定义
 		List<RouteDefinition> oldDefinitions = this.routeDefinitionLocator.getRouteDefinitions()
@@ -69,7 +69,6 @@ public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
 		if (!CollectionUtils.isEmpty(oldDefinitions)) {
 			//先清除掉旧的路由配置
 			oldDefinitions.forEach(r -> {
-				log.info("删除路由定义：[{}]", r);
 				deleteById(r.getId());
 			});
 		}
@@ -85,13 +84,13 @@ public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
 	 */
 	private String deleteById(String id) {
 		try {
-			log.info("网关删除路由定义，id:[{}]", id);
+			log.info("删除网关路由定义，id:[{}]", id);
 			this.routeDefinitionWriter.delete(Mono.just(id)).subscribe();
 			//发布事件通知给gateway 更新路由定义
 			this.publisher.publishEvent(new RefreshRoutesEvent(this));
 			return "delete success";
 		} catch (Exception e) {
-			log.error("网关路由定义删除失败：[{}]", e.getMessage(), e);
+			log.error("删除网关路由定义失败：[{}]", e.getMessage(), e);
 			return "delete fail";
 		}
 	}

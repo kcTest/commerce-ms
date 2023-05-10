@@ -18,7 +18,7 @@ import java.util.Properties;
 import java.util.concurrent.Executor;
 
 /**
- * 通过nacos下发动态路由配置 监听nacos中路由配置变更
+ * 通过nacos下发动态路由配置 监听nacos中路由配置 实现配置动态更新
  */
 @Slf4j
 @Component
@@ -44,6 +44,7 @@ public class DynamicRouteServiceImplByNacos {
 			configService = iniConfigService();
 			if (configService == null) {
 				log.error("初始化配置服务失败");
+				return;
 			}
 			
 			//通过nacos config 并指定路由配置路径去获取路由配置
@@ -57,7 +58,6 @@ public class DynamicRouteServiceImplByNacos {
 			List<RouteDefinition> definitions = JSON.parseArray(configInfo, RouteDefinition.class);
 			if (!CollectionUtils.isEmpty(definitions)) {
 				for (RouteDefinition definition : definitions) {
-					log.info("初始化网关路由配置:[{}]", definition);
 					dynamicRouteService.addRouteDefinition(definition);
 				}
 			}
@@ -109,7 +109,6 @@ public class DynamicRouteServiceImplByNacos {
 				public void receiveConfigInfo(String configInfo) {
 					log.info("开始更新配置:[{}]", configInfo);
 					List<RouteDefinition> definitions = JSON.parseArray(configInfo, RouteDefinition.class);
-					log.info("更新路由：[{}]", definitions.toString());
 					dynamicRouteService.updateList(definitions);
 				}
 			});
