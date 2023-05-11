@@ -1,5 +1,5 @@
 server:
-  port: 1006
+  port: 1007
   servlet:
     context-path: /gw
 spring:

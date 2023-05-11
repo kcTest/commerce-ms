@@ -18,10 +18,10 @@ public class GatewayConstant {
 	/**
 	 * 授权中心登录后获取token的uri格式化接口
 	 */
-	public static final String AUTH_CENTER_TOKEN_URL_FORMAT = "http://%s:/%s/auth/authority/token";
+	public static final String AUTH_CENTER_TOKEN_URL_FORMAT = "http://%s:%s/auth/authority/token";
 	
 	/**
 	 * 授权中心注册后获取token的uri格式化接口
 	 */
-	public static final String AUTH_CENTER_REGISTER_URL_FORMAT = "http://%s:/%s/auth/authority/register";
+	public static final String AUTH_CENTER_REGISTER_URL_FORMAT = "http://%s:%s/auth/authority/register";
 }

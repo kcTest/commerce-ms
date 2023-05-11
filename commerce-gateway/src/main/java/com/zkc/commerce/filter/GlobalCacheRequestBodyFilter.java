@@ -40,7 +40,7 @@ public class GlobalCacheRequestBodyFilter implements GlobalFilter, Ordered {
 					
 					//defer just都是去创建数据源 得到当前数据的副本
 					Flux<DataBuffer> cacheFlux = Flux.defer(() -> {
-						return Flux.just(dataBuffer.split(0));
+						return Flux.just(dataBuffer.split(dataBuffer.readableByteCount()));
 					});
 					
 					//重新包装ServerHttpRequest 重写getBody方法 能够返回请求数据

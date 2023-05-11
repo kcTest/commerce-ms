@@ -31,6 +31,7 @@ import reactor.core.publisher.Mono;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.StandardCharsets;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -92,7 +93,7 @@ public class GlobalLoginOrRegisterFilter implements GlobalFilter, Ordered {
 			return response.setComplete();
 		}
 		
-		//解析通过放行
+		//解析通过放行 进入 HeadTokenGatewayFilter
 		return chain.filter(exchange);
 	}
 	
@@ -108,9 +109,21 @@ public class GlobalLoginOrRegisterFilter implements GlobalFilter, Ordered {
 	 */
 	private String getTokenFromAuthCenter(ServerHttpRequest request, String uriFormat) {
 		//负载均衡
-		ServiceInstance serviceInstance = loadBalancerClient.choose(
-				CommonConstant.AUTH_CENTER_SERVICE_ID
+		ServiceInstance serviceInstance;
+		CompletableFuture<ServiceInstance> future = CompletableFuture.supplyAsync(
+				() -> {
+					return loadBalancerClient.choose(
+							CommonConstant.AUTH_CENTER_SERVICE_ID
+					);
+				}
 		);
+		try {
+			serviceInstance = future.get();
+		} catch (Exception e) {
+			log.error("获取授权中心服务失败:[{}]", e.getMessage(), e);
+			return null;
+		}
+		
 		log.info("获取注册到Nacos的客户端信息(当前为授权中心服务)：[{}],[{}],[{}]", serviceInstance.getServiceId(),
 				serviceInstance.getInstanceId(), JSON.toJSONString(serviceInstance.getMetadata()));
 		

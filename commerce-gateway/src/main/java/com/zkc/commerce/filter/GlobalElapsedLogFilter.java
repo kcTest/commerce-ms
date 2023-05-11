@@ -23,13 +23,13 @@ public class GlobalElapsedLogFilter implements GlobalFilter, Ordered {
 		return chain.filter(exchange).then(
 				//后置
 				Mono.fromRunnable(() -> {
-					log.info("[{}] elapsed: [{}ms]", uri, sw.elapsed(TimeUnit.MILLISECONDS));
+					log.info("当前请求[{}] 耗时: [{}ms]", uri, sw.elapsed(TimeUnit.MILLISECONDS));
 				})
 		);
 	}
 	
 	@Override
 	public int getOrder() {
-		return HIGHEST_PRECEDENCE + 100;
+		return HIGHEST_PRECEDENCE + 4;
 	}
 }

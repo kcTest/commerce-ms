@@ -18,7 +18,7 @@ public class HeadTokenGatewayFilter implements GatewayFilter, Ordered {
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 		//从http header 中寻找 key为token value为 zkc 的键值对
 		String name = exchange.getRequest().getHeaders().getFirst("token");
-		if ("zkc".equals(name)) {
+		if ("test".equals(name)) {
 			return chain.filter(exchange);
 		}
 		//标记此次请求没有权限 并结束本次请求
@@ -28,6 +28,6 @@ public class HeadTokenGatewayFilter implements GatewayFilter, Ordered {
 	
 	@Override
 	public int getOrder() {
-		return HIGHEST_PRECEDENCE + 2;
+		return HIGHEST_PRECEDENCE + 3;
 	}
 }
