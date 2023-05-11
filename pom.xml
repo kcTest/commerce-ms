@@ -32,6 +32,7 @@
         <jjwt.version>0.11.5</jjwt.version>
         <admin-starter-server.version>3.0.3</admin-starter-server.version>
         <screw-core.version>1.0.5</screw-core.version>
+        <spring.cloud.starter.sleuth.version>3.1.7</spring.cloud.starter.sleuth.version>
 
         <mybatisplus.version>3.5.3.1</mybatisplus.version>
         <springdoc-openapi-ui.version>2.0.4</springdoc-openapi-ui.version>
@@ -76,7 +77,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--        暴露资源 监控使用-->
+        <!--        暴露资源 监控使用  +  tracing-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>

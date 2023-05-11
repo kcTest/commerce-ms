@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
  * "message": null,
  * "requestId": "e3b6d1c6-2"
  * }
- * 代码定义配置 请求转发规则
+ * 代码定义路由请求转发规则 静态
  */
 @Configuration
 public class RoutelocatorConfig {
