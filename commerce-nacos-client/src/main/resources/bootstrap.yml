@@ -13,6 +13,20 @@ spring:
         metadata:
           management:
             context-path: ${server.servlet.context-path}/actuator
+#  kafka:
+#    bootstrap-servers: centos007:1111
+#    producer:
+#      retries: 3
+#    consumer:
+#      auto-offset-reset: latest
+#  sleuth:
+#    sampler:
+#      # probability: 1.0  #ProbabilityBasedSampler
+#      rate: 100 #RateLimitingSampler
+#  zipkin:
+#    sender:
+#      type: kafka  #collector
+#    base-url: http://centos007:1008
 logging:
   pattern:
     level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'

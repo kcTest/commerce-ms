@@ -36,7 +36,28 @@ spring:
       max-lifetime: 45000
       auto-commit: true
       pool-name: commerceHikariCP
+#  kafka:
+#    bootstrap-servers: centos007:1111
+#    producer:
+#      retries: 3
+#    consumer:
+#      auto-offset-reset: latest
+#  zipkin:
+#    sender:
+#      type: kafka  #collector
+#    base-url: http://centos007:1008
+logging:
+  pattern:
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
 management:
+  zipkin:
+    tracing:
+      connect-timeout: 5
+      read-timeout: 10
+      endpoint: http://centos007:1008/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
   endpoints:
     web:
       exposure:

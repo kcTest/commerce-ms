@@ -21,6 +21,16 @@ spring:
     #            - Path=/user/{id}
   main:
     allow-bean-definition-overriding: true #可能存在重名
+#  kafka:
+#    bootstrap-servers: centos007:1111
+#    producer:
+#      retries: 3
+#    consumer:
+#      auto-offset-reset: latest
+#  zipkin:
+#    sender:
+#      type: kafka  #collector
+#    base-url: http://centos007:1008
 logging:
   pattern:
     level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
