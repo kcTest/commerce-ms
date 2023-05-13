@@ -22,6 +22,7 @@
         <module>commerce-admin</module>
         <module>commerce-auth-center</module>
         <module>commerce-gateway</module>
+        <module>commerce-service</module>
     </modules>
 
 
@@ -109,6 +110,11 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
+        </dependency>
+        <!--        工具-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
         </dependency>
     </dependencies>
 
@@ -199,6 +205,17 @@
                 <groupId>cn.smallbun.screw</groupId>
                 <artifactId>screw-core</artifactId>
                 <version>${screw-core.version}</version>
+            </dependency>
+            <!--            swagger-->
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>swagger-ui</artifactId>
+                <version>${swagger-ui.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${springdoc-openapi-ui.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
