@@ -1,0 +1,52 @@
+server:
+  port: 1012
+  servlet:
+    context-path: /commerce-account-service
+spring:
+  application:
+    name: commerce-account-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: centos007:1002
+        namespace: 468ff251-10b0-44f3-9bdf-b098ee07bf02
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.show_sql: true
+      hibernate.format_sql: true
+  datasource:
+    url: jdbc:mysql://centos007:1006/commerce?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456xxx
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 4
+      idle-timeout: 30000
+      max-lifetime: 45000
+      connection-timeout: 30000
+      auto-commit: true
+      pool-name: commerceHikariCP
+management:
+  zipkin:
+    tracing:
+      read-timeout: 10
+      connect-timeout: 5
+      endpoint: http://centos007:1008/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
