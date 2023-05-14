@@ -70,7 +70,7 @@ public class AddressServiceTest extends BaseTest {
 	@Test
 	public void testGetAddressInfo() {
 		log.info("根据地址表记录id获取用户对应地址信息：[{}],[{}]", 12L,
-				JSON.toJSONString(addressService.getAddressInfo(12L)));
+				JSON.toJSONString(addressService.getAddressInfoById(12L)));
 	}
 	
 	/**

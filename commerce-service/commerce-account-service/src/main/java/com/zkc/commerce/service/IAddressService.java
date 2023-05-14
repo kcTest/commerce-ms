@@ -21,7 +21,7 @@ public interface IAddressService {
 	/**
 	 * 通过CommerceAddress主键id获取用户地址信息
 	 */
-	AddressInfo getAddressInfo(Long id);
+	AddressInfo getAddressInfoById(Long id);
 	
 	/**
 	 * 通过一个的用户多个地址表id获取对应地址信息 

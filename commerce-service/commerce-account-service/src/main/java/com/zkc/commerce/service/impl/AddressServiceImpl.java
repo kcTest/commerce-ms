@@ -64,7 +64,7 @@ public class AddressServiceImpl implements IAddressService {
 	}
 	
 	@Override
-	public AddressInfo getAddressInfo(Long id) {
+	public AddressInfo getAddressInfoById(Long id) {
 		CommerceAddress commerceAddress = commerceAddressDao.findById(id).orElse(null);
 		if (null == commerceAddress) {
 			throw new RuntimeException("地址不存在");
@@ -84,7 +84,7 @@ public class AddressServiceImpl implements IAddressService {
 		}
 		
 		AddressInfo addressInfo = new AddressInfo();
-		addressInfo.setUserId(commerceAddresses.get(0).getId());
+		addressInfo.setUserId(commerceAddresses.get(0).getUserId());
 		addressInfo.setAddressItems(commerceAddresses.stream()
 				.map(CommerceAddress::toAddressItem).collect(Collectors.toList()));
 		return addressInfo;

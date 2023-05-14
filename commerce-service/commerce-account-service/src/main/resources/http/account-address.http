@@ -1,0 +1,45 @@
+### 创建用户地址信息
+POST http://127.0.0.1:1007/gw/commerce-account-service/address/create-address
+Content-Type: application/json
+commerce-user: eyJhbGciOiJSUzI1NiJ9.eyJjb21tZXJjZS11c2VyIjoie1wiaWRcIjoxNixcInVzZXJuYW1lXCI6XCJ6a2NcIn0iLCJqdGkiOiJhMDY5ZTc4ZC0yZWFmLTRhOGUtYWNhZi04ZjQ0ZjA1ZDM5ZDIiLCJleHAiOjE2ODQwODAwMDB9.ZEx7mNXtJESVOH33znqzmRmQWjnlJhlfWGI8PmgBUMkwhxRkm1gKgsBQ8l-DjynjPvmOMSumm4dpNsqWER9JAPbYFdeDyj6U2QH8oYe8o54KAq7DZvB90WIBtM3vC7nfIH2xXpBV5nru4KNu5eVQySLFDnwbknnLFt5RNO-Nov-uS-VyOGt8zmmhmTVaGTmdbSc70vd4XqX4gy7VFV2Es9tu_gJbYUi7JbnCuRZdGpGR4_JLeAdG2cytsm7Jxvn9UIa_koE-4ciOUIIAD7mAOx0XbsikbJrVDnpe60lIzL4tXS-h0TWLnqtkJyvCCUW7IPmQ6EB9B-WUeVIoOVexRw
+
+{
+  "userId": 16,
+  "addressItems": [
+    {
+      "username": "zkc",
+      "phone": "7654321",
+      "province": "xxxx",
+      "city": "fffff",
+      "addressDetail": "详细地址"
+    }
+  ]
+}
+
+###获取当前登录用户地址信息
+GET http://127.0.0.1:1007/gw/commerce-account-service/address/current-Address
+Accept: application/json
+commerce-user: eyJhbGciOiJSUzI1NiJ9.eyJjb21tZXJjZS11c2VyIjoie1wiaWRcIjoxNixcInVzZXJuYW1lXCI6XCJ6a2NcIn0iLCJqdGkiOiJhMDY5ZTc4ZC0yZWFmLTRhOGUtYWNhZi04ZjQ0ZjA1ZDM5ZDIiLCJleHAiOjE2ODQwODAwMDB9.ZEx7mNXtJESVOH33znqzmRmQWjnlJhlfWGI8PmgBUMkwhxRkm1gKgsBQ8l-DjynjPvmOMSumm4dpNsqWER9JAPbYFdeDyj6U2QH8oYe8o54KAq7DZvB90WIBtM3vC7nfIH2xXpBV5nru4KNu5eVQySLFDnwbknnLFt5RNO-Nov-uS-VyOGt8zmmhmTVaGTmdbSc70vd4XqX4gy7VFV2Es9tu_gJbYUi7JbnCuRZdGpGR4_JLeAdG2cytsm7Jxvn9UIa_koE-4ciOUIIAD7mAOx0XbsikbJrVDnpe60lIzL4tXS-h0TWLnqtkJyvCCUW7IPmQ6EB9B-WUeVIoOVexRw
+
+
+###通过id获取用户地址信息
+GET http://127.0.0.1:1007/gw/commerce-account-service/address/address-info?id=2
+Accept: application/json
+commerce-user: eyJhbGciOiJSUzI1NiJ9.eyJjb21tZXJjZS11c2VyIjoie1wiaWRcIjoxNixcInVzZXJuYW1lXCI6XCJ6a2NcIn0iLCJqdGkiOiJhMDY5ZTc4ZC0yZWFmLTRhOGUtYWNhZi04ZjQ0ZjA1ZDM5ZDIiLCJleHAiOjE2ODQwODAwMDB9.ZEx7mNXtJESVOH33znqzmRmQWjnlJhlfWGI8PmgBUMkwhxRkm1gKgsBQ8l-DjynjPvmOMSumm4dpNsqWER9JAPbYFdeDyj6U2QH8oYe8o54KAq7DZvB90WIBtM3vC7nfIH2xXpBV5nru4KNu5eVQySLFDnwbknnLFt5RNO-Nov-uS-VyOGt8zmmhmTVaGTmdbSc70vd4XqX4gy7VFV2Es9tu_gJbYUi7JbnCuRZdGpGR4_JLeAdG2cytsm7Jxvn9UIa_koE-4ciOUIIAD7mAOx0XbsikbJrVDnpe60lIzL4tXS-h0TWLnqtkJyvCCUW7IPmQ6EB9B-WUeVIoOVexRw
+
+
+### 通过TableId获取用户地址信息
+POST http://127.0.0.1:1007/gw/commerce-account-service/address/address-info-by-table-id
+Content-Type: application/json
+commerce-user: eyJhbGciOiJSUzI1NiJ9.eyJjb21tZXJjZS11c2VyIjoie1wiaWRcIjoxNixcInVzZXJuYW1lXCI6XCJ6a2NcIn0iLCJqdGkiOiJhMDY5ZTc4ZC0yZWFmLTRhOGUtYWNhZi04ZjQ0ZjA1ZDM5ZDIiLCJleHAiOjE2ODQwODAwMDB9.ZEx7mNXtJESVOH33znqzmRmQWjnlJhlfWGI8PmgBUMkwhxRkm1gKgsBQ8l-DjynjPvmOMSumm4dpNsqWER9JAPbYFdeDyj6U2QH8oYe8o54KAq7DZvB90WIBtM3vC7nfIH2xXpBV5nru4KNu5eVQySLFDnwbknnLFt5RNO-Nov-uS-VyOGt8zmmhmTVaGTmdbSc70vd4XqX4gy7VFV2Es9tu_gJbYUi7JbnCuRZdGpGR4_JLeAdG2cytsm7Jxvn9UIa_koE-4ciOUIIAD7mAOx0XbsikbJrVDnpe60lIzL4tXS-h0TWLnqtkJyvCCUW7IPmQ6EB9B-WUeVIoOVexRw
+
+{
+  "ids": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    }
+  ]
+}

@@ -36,7 +36,7 @@ public class LoginUserInfoInterceptor implements HandlerInterceptor {
 		}
 		//网关已做过解析 否则不会经过当前拦截器   
 		if (loginUserInfo == null) {
-			throw new RuntimeException("无法解析当前登录用户");
+			throw new RuntimeException("无法解析当前登录用户, " + request.getRequestURI());
 		}
 		
 		//填充用户信息
@@ -61,7 +61,8 @@ public class LoginUserInfoInterceptor implements HandlerInterceptor {
 	
 	private boolean checkWhiteListUrl(String url) {
 		return StringUtils.containsAny(url,
-				"springdoc", "swagger", "v2", "webjars", "doc.html"
+				"springdoc", "swagger", "v2", "webjars", "doc.html",
+				"v3", "api-docs", "error"
 		);
 	}
 	
