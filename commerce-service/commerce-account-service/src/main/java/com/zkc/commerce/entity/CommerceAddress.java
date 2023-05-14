@@ -39,7 +39,7 @@ public class CommerceAddress {
 	/**
 	 * 用户名
 	 */
-	@Column(name = "user_name", nullable = false)
+	@Column(name = "username", nullable = false)
 	private String userName;
 	
 	/**

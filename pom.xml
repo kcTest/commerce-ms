@@ -33,6 +33,7 @@
         <jjwt.version>0.11.5</jjwt.version>
         <admin-starter-server.version>3.0.3</admin-starter-server.version>
         <screw-core.version>1.0.5</screw-core.version>
+        <hibernate-core.version>6.2.0.Final</hibernate-core.version>
 
         <mybatisplus.version>3.5.3.1</mybatisplus.version>
         <springdoc-openapi-ui.version>2.0.4</springdoc-openapi-ui.version>
@@ -216,6 +217,12 @@
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
                 <version>${springdoc-openapi-ui.version}</version>
+            </dependency>
+            <!--   提高     Unable to create a Configuration, because no Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.-->
+            <dependency>
+                <groupId>org.hibernate.orm</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate-core.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
