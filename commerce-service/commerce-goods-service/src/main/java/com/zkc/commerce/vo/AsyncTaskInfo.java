@@ -1,5 +1,6 @@
 package com.zkc.commerce.vo;
 
+import com.zkc.commerce.constant.AsyncTaskStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,4 +34,9 @@ public class AsyncTaskInfo {
 	 * 总耗时
 	 */
 	private String totalTime;
+	
+	/**
+	 * 异步任务执行状态
+	 */
+	private AsyncTaskStatus status;
 }
