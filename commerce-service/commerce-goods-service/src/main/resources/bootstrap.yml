@@ -1,10 +1,10 @@
 server:
-  port: 1012
+  port: 1013
   servlet:
-    context-path: /commerce-account-service
+    context-path: /commerce-goods-service
 spring:
   application:
-    name: commerce-account-service
+    name: commerce-goods-service
   cloud:
     nacos:
       discovery:
@@ -18,7 +18,7 @@ spring:
     hibernate:
       ddl-auto: none
     properties:
-      hibernate.show_sql: true
+      hibernate.show-sql: true
       hibernate.format_sql: true
     open-in-view: false
   datasource:
@@ -31,19 +31,17 @@ spring:
       maximum-pool-size: 8
       minimum-idle: 4
       idle-timeout: 30000
-      max-lifetime: 45000
       connection-timeout: 30000
-      auto-commit: true
-      pool-name: commerceHikariCP
+      max-lifetime: 45000
+      auto-commit:
+  data:
+    redis:
+      database: 0
+      host: centos007
+      port: 1014
+      timeout: 10000
+      password: 123456xxx
 management:
-  zipkin:
-    tracing:
-      read-timeout: 10
-      connect-timeout: 5
-      endpoint: http://centos007:1008/api/v2/spans
-  tracing:
-    sampling:
-      probability: 1.0
   endpoints:
     web:
       exposure:
@@ -51,3 +49,11 @@ management:
   endpoint:
     health:
       show-details: always
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://centos007:1008/api/v2/spans
+      read-timeout: 10s
+      connect-timeout: 5s
