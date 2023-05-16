@@ -86,7 +86,7 @@ public class AsyncServiceImpl implements IAsyncService {
 					good.getGoodsCategory(), good.getBrandCategory(), good.getGoodsName()
 			).orElse(null);
 			//不存在 可以导入
-			if (goodsInDB != null) {
+			if (goodsInDB == null) {
 				targetGoods.add(good);
 			}
 		});

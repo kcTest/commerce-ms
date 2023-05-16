@@ -14,6 +14,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
+ * 开启异步任务支持
  * 自定义异步任务线程池
  * 异步任务异常捕获
  */

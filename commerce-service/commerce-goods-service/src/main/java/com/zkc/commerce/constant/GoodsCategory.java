@@ -13,12 +13,12 @@ import java.util.stream.Stream;
 @AllArgsConstructor
 public enum GoodsCategory {
 	
-	DIAN_QI("20001", "电器"),
-	JIA_JU("20002", "家具"),
-	FU_SHI("20003", "服饰"),
-	MU_YING("20004", "母婴"),
-	SHI_PIN("20005", "食品"),
-	TU_SHU("20006", "图书"),
+	DIAN_QI("10001", "电器"),
+	JIA_JU("10002", "家具"),
+	FU_SHI("10003", "服饰"),
+	MU_YING("10004", "母婴"),
+	SHI_PIN("10005", "食品"),
+	TU_SHU("10006", "图书"),
 	;
 	
 	/**

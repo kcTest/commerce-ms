@@ -33,7 +33,8 @@ spring:
       idle-timeout: 30000
       connection-timeout: 30000
       max-lifetime: 45000
-      auto-commit:
+      auto-commit: true
+      pool-name: commerceHikariCP
   data:
     redis:
       database: 0
@@ -41,6 +42,9 @@ spring:
       port: 1014
       timeout: 10000
       password: 123456xxx
+logging:
+  pattern:
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
 management:
   endpoints:
     web:
@@ -57,3 +61,6 @@ management:
       endpoint: http://centos007:1008/api/v2/spans
       read-timeout: 10s
       connect-timeout: 5s
+swagger:
+  title: 商品服务
+  description: 商品信息管理相关服务后台接口文档

@@ -74,19 +74,20 @@ public class GoodsServiceImpl implements IGoodsService {
 		
 		//先从redis中取 
 		List<Object> cachedSimpleGoodsInfo = stringRedisTemplate.opsForHash()
-				.multiGet(GoodsConstant.COMMERCE_GOODS_DICT_KEY, ids);
+				.multiGet(GoodsConstant.COMMERCE_GOODS_DICT_KEY, ids)
+				.stream().filter(Objects::nonNull).collect(Collectors.toList());
 		
 		//为空需要缓存要查询的所有商品
 		if (CollectionUtils.isEmpty(cachedSimpleGoodsInfo)) {
 			log.info("需要缓存当前查询的所有商品：[{}]", JSON.toJSONString(ids));
 			result = queryGoodsInfoFromDbAndCacheToRedis(tableId);
 		} else {
-			//缓存没有在redis中缓存的商品
-			if (cachedSimpleGoodsInfo.size() != ids.size()) {
-				//部分已缓存的商品加入返回结果中
-				List<SimpleGoodsInfo> existSimpleGoodsInfos = parseCachedGoodsInfo(cachedSimpleGoodsInfo);
+			//已缓存的商品加入返回结果中
+			List<SimpleGoodsInfo> existSimpleGoodsInfos = parseCachedGoodsInfo(cachedSimpleGoodsInfo);
+			//部分商品没有缓存在redis 需要缓存
+			if (existSimpleGoodsInfos.size() != ids.size()) {
 				
-				//过滤出在缓存中没有查到的商品数据ID 
+				//过滤出需要缓存的商品数据ID 
 				Collection<Long> idsToCache = CollectionUtils.subtract(
 						ids.stream().map(i -> Long.parseLong(i.toString())).collect(Collectors.toList()),
 						existSimpleGoodsInfos.stream().map(SimpleGoodsInfo::getId).collect(Collectors.toList()));
@@ -101,6 +102,7 @@ public class GoodsServiceImpl implements IGoodsService {
 				result = new ArrayList<>(CollectionUtils.union(existSimpleGoodsInfos, cachedSimpleGoodsInfos));
 			} else {
 				log.info("所有商品均从缓存中查询到：[{}]", JSON.toJSONString(ids));
+				result = existSimpleGoodsInfos;
 			}
 		}
 		
@@ -140,11 +142,11 @@ public class GoodsServiceImpl implements IGoodsService {
 				throw new RuntimeException("商品库存不足:[{}]" + g.getId());
 			}
 			g.setInventory(inventory - needDeductInventory);
-			log.error("商品库存:[{}],[{}],[{}]", inventory, deductGoodsInventories, g.getInventory());
+			log.info("商品库存:[{}],[{}],[{}]", inventory, needDeductInventory, g.getInventory());
 		});
 		
 		commerceGoodsDao.saveAll(commerceGoodsList);
-		log.error("商品库存扣减完成");
+		log.info("商品库存扣减完成");
 		
 		return true;
 	}

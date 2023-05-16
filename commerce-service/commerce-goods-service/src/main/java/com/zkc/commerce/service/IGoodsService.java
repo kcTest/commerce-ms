@@ -24,7 +24,7 @@ public interface IGoodsService {
 	PageSimpleGoodsInfo getSimpleGoodsInfoByPage(int page);
 	
 	/**
-	 * 通过TableId查询简单商品详细信息
+	 * 通过TableId查询简单商品信息
 	 */
 	List<SimpleGoodsInfo> getSimpleGoodsInfoByTableId(TableId tableId);
 	

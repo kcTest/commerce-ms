@@ -51,3 +51,6 @@ management:
   endpoint:
     health:
       show-details: always
+swagger:
+  title: 用户服务
+  description: 用户余额及地址相关服务后台接口文档

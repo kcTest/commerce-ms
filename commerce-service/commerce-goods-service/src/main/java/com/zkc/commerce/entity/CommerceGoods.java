@@ -126,7 +126,7 @@ public class CommerceGoods {
 		commerceGoods.setGoodsStatus(GoodsStatus.ONLINE);
 		commerceGoods.setPrice(goodsInfo.getPrice());
 		commerceGoods.setSupply(goodsInfo.getSupply());
-		commerceGoods.setInventory(commerceGoods.getInventory());
+		commerceGoods.setInventory(goodsInfo.getSupply());
 		commerceGoods.setGoodsProperty(JSON.toJSONString(goodsInfo.getGoodsProperty()));
 		return commerceGoods;
 	}
