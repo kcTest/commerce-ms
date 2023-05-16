@@ -1,0 +1,18 @@
+### 从授权服务中获取JwtToken 写死URL
+POST http://127.0.0.1:1003/commerce-nc/communication/rest-template
+Content-Type: application/json
+
+{
+  "username": "zkc",
+  "password": "e087dae60e744ea80722b785a75adbb7"
+}
+
+
+### 从授权服务中获取JwtToken 写死URL
+POST http://127.0.0.1:1003/commerce-nc/communication/rest-template-load-balance
+Content-Type: application/json
+
+{
+  "username": "zkc",
+  "password": "e087dae60e744ea80722b785a75adbb7"
+}
