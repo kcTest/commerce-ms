@@ -16,3 +16,22 @@ Content-Type: application/json
   "username": "zkc",
   "password": "e087dae60e744ea80722b785a75adbb7"
 }
+
+### 使用LoadBalancer从授权服务中获取JwtToken
+POST http://127.0.0.1:1003/commerce-nc/communication/loadBalancer
+Content-Type: application/json
+
+{
+  "username": "zkc",
+  "password": "e087dae60e744ea80722b785a75adbb7"
+}
+
+
+### 使用Openfeign从授权服务中获取JwtToken
+POST http://127.0.0.1:1003/commerce-nc/communication/openfeign
+Content-Type: application/json
+
+{
+  "username": "zkc",
+  "password": "e087dae60e744ea80722b785a75adbb7"
+}
