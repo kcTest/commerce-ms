@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * 与授权中心服务通信的feignClient
  */
-@FeignClient(contextId = "AuthFeignClient", value = "commerce-auth", path = "/auth")
+@FeignClient(contextId = "AuthFeignClient", value = "commerce-auth", path = "/auth", fallbackFactory = AuthFeignClientFallbackFactory.class)
 public interface AuthFeignClient {
 	
 	/**
