@@ -23,6 +23,7 @@
         <module>commerce-auth-center</module>
         <module>commerce-gateway</module>
         <module>commerce-service</module>
+        <module>commerce-stream-client</module>
     </modules>
 
 

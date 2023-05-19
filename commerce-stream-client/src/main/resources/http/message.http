@@ -1,0 +1,26 @@
+### https://docs.spring.io/spring-cloud-stream/docs/current/reference/html/spring-cloud-stream-binder-kafka.html#kafka-dlq-processing
+
+### 发送自动处理类型消息
+POST http://127.0.0.1:1017/commerce-stream-client/message/send-auto-process
+Content-Type: application/json
+
+{
+  "id": 1,
+  "content": "这是自动处理类型消息",
+  "projectName": "commerce-stream-client",
+  "version": "1.0"
+}
+
+### 发送手动处理类型消息
+POST http://127.0.0.1:1017/commerce-stream-client/message/send-manual-process
+Content-Type: application/json
+
+{
+  "id": 2,
+  "content": "这是手动处理类型消息",
+  "projectName": "commerce-stream-client",
+  "version": "1.0"
+}
+
+### 开启手动处理类型消息的自动消费
+GET http://127.0.0.1:1017/commerce-stream-client/message/start-auto-process
