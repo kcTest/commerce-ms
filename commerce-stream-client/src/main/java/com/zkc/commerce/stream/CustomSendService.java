@@ -16,15 +16,20 @@ public class CustomSendService {
 	private final String BINDINGS_OUTPUT_NAME_AUTO = "auto-output";
 	private final String BINDINGS_OUTPUT_NAME_MANUAL = "manual-output";
 	private final StreamBridge streamBridge;
+	private final String HEADER_PARTITION_KEY = "partitionKey";
+	private final String HEADER_PARTITION_KEY_VALUE = "partitionKey";
 	
 	public void sendMessageAutoProcess(CustomMessage customMessage) {
-		log.info("CustomSendService  发送自动处理类型消息:[{}]", JSON.toJSONString(customMessage));
-		streamBridge.send(BINDINGS_OUTPUT_NAME_AUTO, MessageBuilder.withPayload(customMessage).build());
+		String message = JSON.toJSONString(customMessage);
+		log.info("CustomSendService  发送自动处理类型消息:[{}]", message);
+		streamBridge.send(BINDINGS_OUTPUT_NAME_AUTO, MessageBuilder.withPayload(message)
+				.setHeader(HEADER_PARTITION_KEY, HEADER_PARTITION_KEY_VALUE).build());
 	}
 	
 	public void sendMessageManualProcess(CustomMessage customMessage) {
-		log.info("CustomSendService 发送手动处理类型消息:[{}]", JSON.toJSONString(customMessage));
-		streamBridge.send(BINDINGS_OUTPUT_NAME_MANUAL, MessageBuilder.withPayload(customMessage).build());
+		String message = JSON.toJSONString(customMessage);
+		log.info("CustomSendService 发送手动处理类型消息:[{}]", message);
+		streamBridge.send(BINDINGS_OUTPUT_NAME_MANUAL, MessageBuilder.withPayload(message).build());
 	}
 	
 }

@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 public class CustomReceiveService {
 	
 	private final String BINDINGS_INPUT_NAME_MANUAL = "manual-input";
-	
 	private final BindingsEndpoint endpoint;
 	
 	public void startAutoProcess() {

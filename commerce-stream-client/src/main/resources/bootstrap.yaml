@@ -35,20 +35,35 @@ spring:
         auto-output: #BindingProperties
           destination: topic-auto-commerce-stream-client  # The physical name at the broker that the binder binds to. / topic name
           content-type: text/plain # Default: 'application/json'.
-        #接收方
+          producer: #ProducerProperties
+            ## Used to extract a key used to compute the partition id
+            # partition-key-expression: headers['partitionKey'] 被自定义策略覆盖
+            ## Used to determine partition id based on partition key. uses the default partitioning (key.hashCode() % partitionCount).
+            ## partition-selector-expression: 
+            partition-count: 1
+        #接收方1
         auto-input:
           #If you miss the group.id in your Spring Cloud Stream application, then it becomes an anonymous consumer.
           group: auto-group
           destination: topic-auto-commerce-stream-client
+        # consumer: #ConsumerProperties
+        #   partitioned: true
         manual-output:
           destination: topic-manual-commerce-stream-client
           content-type: text/plain
+          producer:
+            #partition-key-extractor-name: customPartitionKeyExtractorName # implements PartitionKeyExtractorStrategy # payload.projectName
+            #partition-selector-name: customPartitionSelectorStrategy # implements  PartitionSelectorStrategy
+            partition-count: 1
         manual-input:
           group: manual-group
           destination: topic-manual-commerce-stream-client
           #disable auto startup for this processor.
           consumer:
             auto-startup: false
+      #rebalanced  requires 
+      instance-count: 1
+      instance-index: 0
 management:
   zipkin:
     tracing:
