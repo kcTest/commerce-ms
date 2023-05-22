@@ -43,18 +43,4 @@ public class ConsumeConfig {
 		};
 	}
 	
-	@Bean
-	public Consumer<Message<String>> manualProcess1() {
-		return new Consumer<Message<String>>() {
-			@Override
-			public void accept(Message<String> message) {
-				Object partitionIndex = message.getHeaders().get(KafkaHeaders.RECEIVED_PARTITION);
-				Object partitionKey = JSON.parseObject(message.getPayload(), CustomMessage.class).getProjectName();
-				log.info("线程:[{}]", Thread.currentThread().getId());
-				log.info("CustomReceiveService manualProcess1 接收手动处理类型消息:[{}],[{}],[{}]",
-						partitionIndex, partitionKey, message.getPayload());
-			}
-		};
-	}
-	
 }
