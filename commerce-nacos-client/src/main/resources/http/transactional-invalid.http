@@ -1,0 +1,11 @@
+### 3. rollbackFor属性设置错误。 抛出异常但没有回滚
+GET http://127.0.0.1:1003/commerce-nc/transactional-invalid/wrong-rollback-for-01
+
+### 3. rollbackFor属性设置错误。 抛出异常回滚成功
+GET http://127.0.0.1:1003/commerce-nc/transactional-invalid/wrong-rollback-for-02
+
+### 4. 在同一个类中的方法调用，导致事务失效。 抛出异常但没有回滚。被注解的方法在当前类之外的类被调用时才会被当前类的代理对象管理 事务才会生效
+GET http://127.0.0.1:1003/commerce-nc/transactional-invalid/wrong-inner-call
+
+### 5. 自己主动去catch,代表[没有出现]异常，导致事务失效。 抛出异常但没有回滚
+GET http://127.0.0.1:1003/commerce-nc/transactional-invalid/wrong-try-catch

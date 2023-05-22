@@ -30,9 +30,32 @@ spring:
         enabled: true
       httpclient:
         enabled: false
+  datasource:
+    url: jdbc:mysql://centos007:1006/commerce?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456xxx
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 8
+      minimum-idle: 4
+      idle-timeout: 30000
+      connection-timeout: 30000
+      max-lifetime: 45000
+      auto-commit: true
+      pool-name: NacosClientHikariCP
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.show_sql: true
+      hibernate.format_sql: true
+    open-in-view: false
 # logging.level.root=debug
 logging:
   level:
+    org.springframework.test.context.transaction: trace
     com:
       zkc:
         commerce:

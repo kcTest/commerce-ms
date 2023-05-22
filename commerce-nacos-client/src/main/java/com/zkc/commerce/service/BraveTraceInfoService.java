@@ -13,13 +13,13 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class BraveTraceInfoService {
 	
-	private final Tracer tracer;
+//	private final Tracer tracer;
 	
 	/**
 	 * 打印当前的跟踪信息到日志中
 	 */
 	public void logCurrentTraceInfo() {
-		log.info("brave trace id: [{}]", tracer.currentSpan().context().traceId());
-		log.info("brave span id:[{}]", tracer.currentSpan().context().spanId());
+//		log.info("brave trace id: [{}]", tracer.currentSpan().context().traceId());
+//		log.info("brave span id:[{}]", tracer.currentSpan().context().spanId());
 	}
 }
