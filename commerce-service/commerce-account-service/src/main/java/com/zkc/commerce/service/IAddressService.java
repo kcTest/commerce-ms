@@ -24,7 +24,7 @@ public interface IAddressService {
 	AddressInfo getAddressInfoById(Long id);
 	
 	/**
-	 * 通过一个的用户多个地址表id获取对应地址信息 
+	 * 通过地址表记录id查询对应用户地址信息 
 	 */
 	AddressInfo getAddressInfoByTableId(TableId tableId);
 }

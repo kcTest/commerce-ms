@@ -37,8 +37,8 @@ logging:
 management:
   zipkin:
     tracing:
-      connect-timeout: 5
-      read-timeout: 10
+      connect-timeout: 5000
+      read-timeout: 5000
       endpoint: http://centos007:1008/api/v2/spans
   tracing:
     sampling:

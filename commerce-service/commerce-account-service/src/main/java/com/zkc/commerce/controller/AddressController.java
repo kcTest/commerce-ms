@@ -40,7 +40,7 @@ public class AddressController {
 		return addressService.getAddressInfoById(id);
 	}
 	
-	@Operation(summary = "获取用户地址信息", description = "通过TableId获取用户地址信息", method = "POST")
+	@Operation(summary = "获取用户地址信息", description = "通过地址表记录id查询对应用户地址信息", method = "POST")
 	@PostMapping("/address-info-by-table-id")
 	public AddressInfo getAddressInfoByTableId(@RequestBody TableId tableId) {
 		return addressService.getAddressInfoByTableId(tableId);

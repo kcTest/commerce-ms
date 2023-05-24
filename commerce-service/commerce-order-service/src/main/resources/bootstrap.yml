@@ -1,10 +1,10 @@
 server:
-  port: 1013
+  port: 1025
   servlet:
-    context-path: /commerce-goods-service
+    context-path: /commerce-order-service
 spring:
   application:
-    name: commerce-goods-service
+    name: commerce-order-service
   cloud:
     nacos:
       discovery:
@@ -13,6 +13,33 @@ spring:
         metadata:
           management:
             context-path: ${server.servlet.context-path}/actuator
+    openfeign: #使用的项目配置，FeignConfig
+      client:
+        config:
+          #feignName:default；    feignName refers to @FeignClient value 可以单独对某个远程服务调用客户端进行配置
+          default: #If you prefer using configuration properties to configure all @FeignClient, you can create configuration properties with default feign name.
+            connectTimeout: 2000
+            readTimeout: 5000
+            loggerlevel: BASIC
+      circuitbreaker:
+        enabled: true
+      okhttp:
+        enabled: true
+      httpclient:
+        enabled: false
+    stream:
+      function:
+        definition: logistic
+        bindings:
+          logistic-out-0: logistic-output
+      kafka:
+        binder:
+          brokers: centos007:1016
+          autoCreateTopics: true
+      bindings:
+        logistic-output:
+          destination: commerce-order-logistic
+          content-type: text/plain
   jpa:
     show-sql: true
     hibernate:
@@ -34,14 +61,7 @@ spring:
       connection-timeout: 30000
       max-lifetime: 45000
       auto-commit: true
-      pool-name: GoodsServiceHikariCP
-  data:
-    redis:
-      database: 0
-      host: centos007
-      port: 1014
-      timeout: 10000
-      password: 123456xxx
+      pool-name: OrderServiceHikariCP
 logging:
   pattern:
     level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
@@ -62,8 +82,8 @@ management:
       read-timeout: 5000
       connect-timeout: 5000
 swagger:
-  title: 商品服务
-  description: 商品信息管理相关服务后台接口文档
+  title: 订单服务
+  description: 订单相关服务后台接口文档
 seata:
   # nacos中已配置
   #  service: 

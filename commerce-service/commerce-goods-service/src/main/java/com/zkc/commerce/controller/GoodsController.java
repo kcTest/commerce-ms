@@ -46,7 +46,7 @@ public class GoodsController {
 	
 	@Operation(summary = "扣减库存", description = "扣减多个商品库存", method = "PUT")
 	@PutMapping("/deduct-goods-inventory")
-	public Boolean getSimpleGoodsInfoByTableId(@RequestBody List<DeductGoodsInventory> deductGoodsInventories) {
+	public Boolean deductGoodsInventory(@RequestBody List<DeductGoodsInventory> deductGoodsInventories) {
 		return goodsService.deductGoodsInventory(deductGoodsInventories);
 	}
 	

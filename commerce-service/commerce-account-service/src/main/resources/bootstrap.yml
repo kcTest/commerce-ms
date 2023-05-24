@@ -38,8 +38,8 @@ spring:
 management:
   zipkin:
     tracing:
-      read-timeout: 10
-      connect-timeout: 5
+      read-timeout: 5000
+      connect-timeout: 5000
       endpoint: http://centos007:1008/api/v2/spans
   tracing:
     sampling:
@@ -54,3 +54,29 @@ management:
 swagger:
   title: 用户服务
   description: 用户余额及地址相关服务后台接口文档
+seata:
+  # nacos中已配置
+  #  service: 
+  #    vgroup-mapping:
+  #      commerce_tx_group: default  #指定事务分组至集群映射关系（等号右侧的集群名需要与Seata-server注册到Nacos的cluster保持一致）
+  tx-service-group: commerce_tx_group #事务分组配置（在v1.5之后默认值为default_tx_group）
+  registry:
+    type: nacos #使用nacos作为注册中心
+    nacos:
+      application: seata-server # Seata服务名（应与seata-server实际注册的服务名一致）
+      server-addr: centos007:1002 #注册中心IP:端口
+      namespace: aea013fb-ebc4-4e44-8476-fa0b2c67fc94
+      group: SEATA_GROUP #  Seata分组名（应与seata-server实际注册的分组名一致）
+      username: nacos
+      password: nacos
+      secret-key: SeataSecretKey0c382ef121d778043159209298fd40bf3850a017
+      cluster: default
+  config:
+    type: nacos
+    nacos:
+      server-addr: centos007:1002
+      namespace: aea013fb-ebc4-4e44-8476-fa0b2c67fc94
+      group: SEATA_GROUP
+      username: nacos
+      password: nacos
+      secret-key: SeataSecretKey0c382ef121d778043159209298fd40bf3850a017

@@ -23,7 +23,7 @@ public class ConsumeConfig {
 			public void accept(Message<String> message) {
 				Object partitionIndex = message.getHeaders().get(KafkaHeaders.RECEIVED_PARTITION);
 				Object partitionKey = message.getHeaders().get(HEADER_PARTITION_KEY);
-				log.info("CustomReceiveService autoProcess 接收来自动处理类型消息:[{}],[{}],[{}]",
+				log.info("autoProcess 接收来自动处理类型消息:[{}],[{}],[{}]",
 						partitionIndex, partitionKey, message.getPayload());
 			}
 		};
@@ -37,7 +37,7 @@ public class ConsumeConfig {
 				Object partitionIndex = message.getHeaders().get(KafkaHeaders.RECEIVED_PARTITION);
 				Object partitionKey = JSON.parseObject(message.getPayload(), CustomMessage.class).getProjectName();
 				log.info("线程:[{}]", Thread.currentThread().getId());
-				log.info("CustomReceiveService manualProcess 接收手动处理类型消息:[{}],[{}],[{}]",
+				log.info("manualProcess 接收手动处理类型消息:[{}],[{}],[{}]",
 						partitionIndex, partitionKey, message.getPayload());
 			}
 		};
