@@ -65,10 +65,10 @@ swagger:
   title: 商品服务
   description: 商品信息管理相关服务后台接口文档
 seata:
-  # nacos中已配置
-  #  service: 
-  #    vgroup-mapping:
-  #      commerce_tx_group: default  #指定事务分组至集群映射关系（等号右侧的集群名需要与Seata-server注册到Nacos的cluster保持一致）
+#  #nacos中已配置
+#  service:
+#    vgroup-mapping:
+#      commerce_tx_group: default  #指定事务分组至集群映射关系（等号右侧的集群名需要与Seata-server注册到Nacos的cluster保持一致）
   tx-service-group: commerce_tx_group #事务分组配置（在v1.5之后默认值为default_tx_group）
   registry:
     type: nacos #使用nacos作为注册中心

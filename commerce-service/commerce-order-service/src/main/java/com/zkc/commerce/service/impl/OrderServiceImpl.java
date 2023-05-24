@@ -124,7 +124,7 @@ public class OrderServiceImpl implements IOrderService {
 		logisticMessage.setUserId(userId);
 		logisticMessage.setOrderId(order.getId());
 		logisticMessage.setAddressId(orderInfo.getUserAddressId());
-		if (logisticMessageService.sendMessage(logisticMessage)) {
+		if (!logisticMessageService.sendMessage(logisticMessage)) {
 			throw new RuntimeException("发送订单物流消息失败");
 		}
 		log.info("发送订单物流消息成功,[{}]", JSON.toJSONString(logisticMessage));

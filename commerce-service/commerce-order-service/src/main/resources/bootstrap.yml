@@ -1,5 +1,5 @@
 server:
-  port: 1025
+  port: 1026
   servlet:
     context-path: /commerce-order-service
 spring:
@@ -29,16 +29,15 @@ spring:
         enabled: false
     stream:
       function:
-        definition: logistic
         bindings:
-          logistic-out-0: logistic-output
+          logisticProcess-out-0: logistic-output
       kafka:
         binder:
           brokers: centos007:1016
           autoCreateTopics: true
       bindings:
         logistic-output:
-          destination: commerce-order-logistic
+          destination: topic-commerce-order-logistic
           content-type: text/plain
   jpa:
     show-sql: true
@@ -85,11 +84,11 @@ swagger:
   title: 订单服务
   description: 订单相关服务后台接口文档
 seata:
-  # nacos中已配置
-  #  service: 
+  #  #nacos中已配置
+  #  service: #ServiceProperties
   #    vgroup-mapping:
   #      commerce_tx_group: default  #指定事务分组至集群映射关系（等号右侧的集群名需要与Seata-server注册到Nacos的cluster保持一致）
-  tx-service-group: commerce_tx_group #事务分组配置（在v1.5之后默认值为default_tx_group）
+  tx-service-group: commerce_tx_group #事务分组配置（在v1.5之后默认值为default_tx_group） #SeataProperties
   registry:
     type: nacos #使用nacos作为注册中心
     nacos:

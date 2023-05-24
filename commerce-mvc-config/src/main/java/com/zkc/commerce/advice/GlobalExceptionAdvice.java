@@ -15,8 +15,7 @@ public class GlobalExceptionAdvice {
 	
 	@ExceptionHandler(value = Exception.class)
 	public CommonResponse<String> commerceExceptionHandler(HttpServletRequest req, Exception ex) {
-		CommonResponse<String> response = new CommonResponse<>(-1, "error");
-		response.setData(ex.getMessage());
+		CommonResponse<String> response = new CommonResponse<>(-1, ex.getMessage());
 		//默认logback
 		log.error("commerce service has error:[{}]", ex.getMessage(), ex);
 		return response;
