@@ -1,0 +1,3 @@
+### 硬编码流量控制规则
+GET http://127.0.0.1:1030/commerce-sentinel-client/flow-rule/hard-code
+Content-Type: application/json

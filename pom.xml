@@ -24,6 +24,7 @@
         <module>commerce-gateway</module>
         <module>commerce-service</module>
         <module>commerce-stream-client</module>
+        <module>commerce-sentinel-client</module>
     </modules>
 
 
@@ -42,7 +43,7 @@
         <spring-cloud-starter-bootstrap.version>3.1.3</spring-cloud-starter-bootstrap.version>
         <spring-cloud-dependencies.version>2022.0.1</spring-cloud-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2022.0.0.0-RC1</spring-cloud-alibaba-dependencies.version>
-        <fastjson.version>1.2.83</fastjson.version>
+        <fastjson.version>2.0.32</fastjson.version>
         <openfeign.version>3.8.0</openfeign.version>
         <hystrix.version>2.2.10.RELEASE</hystrix.version>
         <spring.boot.starter.data.elasticsearch.version>3.0.5</spring.boot.starter.data.elasticsearch.version>
@@ -229,10 +230,10 @@
                         <execution>
                             <id>default</id>
                             <phase>package</phase>
-                            <goals>
-                                <goal>build</goal>
-                                <goal>push</goal>
-                            </goals>
+<!--                            <goals>-->
+<!--                                <goal>build</goal>-->
+<!--                                <goal>push</goal>-->
+<!--                            </goals>-->
                         </execution>
                     </executions>
                     <configuration>

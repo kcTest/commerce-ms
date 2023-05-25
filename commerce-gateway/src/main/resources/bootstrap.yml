@@ -19,6 +19,10 @@ spring:
     #          uri: 127.0.01:8080/user/{id} #匹配后路由地址
     #          predicates: #断言
     #            - Path=/user/{id}
+    sentinel:
+      transport:
+        port: 1029
+        dashboard: centos007:1029
   main:
     allow-bean-definition-overriding: true #可能存在重名
 #  kafka:

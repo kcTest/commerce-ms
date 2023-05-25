@@ -1,0 +1,48 @@
+server:
+  port: 1030
+  servlet:
+    context-path: /commerce-sentinel-client
+spring:
+  application:
+    name: commerce-sentinel-client
+  cloud:
+    nacos:
+      discovery:
+        server-addr: centos007:1002
+        namespace: 468ff251-10b0-44f3-9bdf-b098ee07bf02
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+    openfeign: #使用的项目配置，FeignConfig
+      client:
+        config:
+          #feignName:default；    feignName refers to @FeignClient value 可以单独对某个远程服务调用客户端进行配置
+          default: #If you prefer using configuration properties to configure all @FeignClient, you can create configuration properties with default feign name.
+            connectTimeout: 2000
+            readTimeout: 5000
+            loggerlevel: BASIC
+      circuitbreaker:
+        enabled: true
+      okhttp:
+        enabled: true
+      httpclient:
+        enabled: false
+    sentinel: # 版本问题 配置不起作用 Dashboard server address not configured or not available   暂时在运行时传参 
+      transport:
+        #在应用对应的机器上启动一个 Http Server，该 Server 会与 Sentinel 控制台做交互。
+        #比如 Sentinel 控制台添加了一个限流规则，会把规则数据 push 给这个 Http Server 接收，Http Server 再将规则注册到 Sentinel 中。
+        port: 8719 #未指定默认使用8719++++
+        #-Dcsp.sentinel.dashboard.server=centos007:1028
+        #-Dproject.name=commerce-sentinel-client 应用的名称显示在dashboard中
+        #-Dcsp.sentinel.heartbeat.client.ip=192.168.1.3 指定心跳包中本机的 IP
+        dashboard: centos007:1028
+        clientIp: 192.168.1.3
+      eager: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
