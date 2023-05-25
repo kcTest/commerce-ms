@@ -1,10 +1,10 @@
 server:
-  port: 1012
+  port: 1027
   servlet:
-    context-path: /commerce-account-service
+    context-path: /commerce-logistic-service
 spring:
   application:
-    name: commerce-account-service
+    name: commerce-logistic-service
   cloud:
     nacos:
       discovery:
@@ -13,12 +13,38 @@ spring:
         metadata:
           management:
             context-path: ${server.servlet.context-path}/actuator
+    openfeign: #使用的项目配置，FeignConfig
+      client:
+        config:
+          #feignName:default；    feignName refers to @FeignClient value 可以单独对某个远程服务调用客户端进行配置
+          default: #If you prefer using configuration properties to configure all @FeignClient, you can create configuration properties with default feign name.
+            connectTimeout: 2000
+            readTimeout: 5000
+            loggerlevel: BASIC
+      circuitbreaker:
+        enabled: true
+      okhttp:
+        enabled: true
+      httpclient:
+        enabled: false
+    stream:
+      function:
+        bindings:
+          logisticProcess-in-0: logistic-in
+      kafka:
+        binder:
+          brokers: centos007:1016
+          autoCreateTopics: true
+      bindings:
+        logistic-in:
+          destination: topic-commerce-order-logistic
+          content-type: text/plain
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: none
     properties:
-      hibernate.show_sql: true
+      hibernate.show-sql: true
       hibernate.format_sql: true
     open-in-view: false
   datasource:
@@ -31,22 +57,14 @@ spring:
       maximum-pool-size: 8
       minimum-idle: 4
       idle-timeout: 30000
-      max-lifetime: 45000
       connection-timeout: 30000
+      max-lifetime: 45000
       auto-commit: true
-      pool-name: AccountServiceHikariCP
+      pool-name: OrderServiceHikariCP
 logging:
   pattern:
     level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
 management:
-  zipkin:
-    tracing:
-      read-timeout: 5000
-      connect-timeout: 5000
-      endpoint: http://centos007:1008/api/v2/spans
-  tracing:
-    sampling:
-      probability: 1.0
   endpoints:
     web:
       exposure:
@@ -54,15 +72,23 @@ management:
   endpoint:
     health:
       show-details: always
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://centos007:1008/api/v2/spans
+      read-timeout: 5000
+      connect-timeout: 5000
 swagger:
-  title: 用户服务
-  description: 用户余额及地址相关服务后台接口文档
+  title: 物流服务
+  description: 物流相关服务后台接口文档
 seata:
-#  # nacos中已配置
-#  service:
-#    vgroup-mapping:
-#      commerce_tx_group: default  #指定事务分组至集群映射关系（等号右侧的集群名需要与Seata-server注册到Nacos的cluster保持一致）
-  tx-service-group: commerce_tx_group #事务分组配置（在v1.5之后默认值为default_tx_group）
+  #  #nacos中已配置
+  #  service: #ServiceProperties
+  #    vgroup-mapping:
+  #      commerce_tx_group: default  #指定事务分组至集群映射关系（等号右侧的集群名需要与Seata-server注册到Nacos的cluster保持一致）
+  tx-service-group: commerce_tx_group #事务分组配置（在v1.5之后默认值为default_tx_group） #SeataProperties
   registry:
     type: nacos #使用nacos作为注册中心
     nacos:
