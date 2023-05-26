@@ -1,9 +1,12 @@
 package com.zkc.commerce.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
+import com.alibaba.fastjson.JSON;
+import com.zkc.commerce.CustomBlockHandler;
 import com.zkc.commerce.vo.CommonResponse;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
@@ -52,11 +55,19 @@ public class FlowRuleCodeController {
 	 * <p>
 	 * value：资源名称，必需项（不能为空）
 	 */
-	@SentinelResource(value = "hardCode")
+	//@SentinelResource(value = "hardCode")
+	//@SentinelResource(value = "hardCode", blockHandler = "handleException")
+	@SentinelResource(value = "hardCode",
+			blockHandlerClass = CustomBlockHandler.class, blockHandler = "customHandleException")
 	@GetMapping("/hard-code")
 	public CommonResponse<String> flowRuleCode() {
 		log.info("请求 flowRuleCode 方法");
 		return new CommonResponse<>(0, "", "flowRuleCode");
+	}
+	
+	public CommonResponse<String> handleException(BlockException e) {
+		log.error("BlockException：[{}]", JSON.toJSONString(e.getRule()));
+		return new CommonResponse<>(-1, "限流异常", e.getClass().getCanonicalName());
 	}
 	
 }
