@@ -1,0 +1,8 @@
+### 根据资源名限流
+POST http://127.0.0.1:1030/commerce-sentinel-client/sentinel-rest-template/get-token
+Content-Type: application/json
+
+{
+  "username": "zkc",
+  "password": "e087dae60e744ea80722b785a75adbb7"
+}

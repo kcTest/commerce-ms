@@ -31,6 +31,7 @@ public class AuthController {
 	public JwtToken token(@RequestBody UsernameAndPassword usernameAndPassword) throws Exception {
 		//授权服务器不对外开放 
 		log.info("获取token的请求参数：[{}]", JSON.toJSONString(usernameAndPassword));
+//		int i = 1 / 0;
 		return new JwtToken(ijwtService.generateToken(usernameAndPassword.getUsername(),
 				usernameAndPassword.getPassword()));
 	}
