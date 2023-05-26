@@ -1,0 +1,3 @@
+### sentinel+openfeign熔断降级
+GET http://127.0.0.1:1030/commerce-sentinel-client/sentinel-feign/get-by-feign?code=2
+Accept: application/json
