@@ -14,8 +14,8 @@ public class SentinelConfig {
 	 * 降级处理fallback
 	 */
 	@Bean
-	@SentinelRestTemplate(blockHandlerClass = RestTemplateExceptionUtil.class, blockHandler = "handleException",
-			fallbackClass = RestTemplateExceptionUtil.class, fallback = "handleFallback")
+//	@SentinelRestTemplate(blockHandlerClass = RestTemplateExceptionUtil.class, blockHandler = "handleException",
+//			fallbackClass = RestTemplateExceptionUtil.class, fallback = "handleFallback")
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}

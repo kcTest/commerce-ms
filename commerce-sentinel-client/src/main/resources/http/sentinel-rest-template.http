@@ -1,4 +1,4 @@
-### 根据资源名限流
+### 使用sentinel保护RestTemplate服务间调用
 POST http://127.0.0.1:1030/commerce-sentinel-client/sentinel-rest-template/get-token
 Content-Type: application/json
 

@@ -1,7 +1,7 @@
 package com.zkc.commerce.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
-import com.zkc.commerce.CustomBlockHandler;
+import com.zkc.commerce.blockhandler.CustomBlockHandler;
 import com.zkc.commerce.vo.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
