@@ -1,0 +1,5 @@
+### 根据资源名限流
+GET http://127.0.0.1:1030/commerce-sentinel-client/dashboard/by-resource
+
+###根据URL限流
+GET http://127.0.0.1:1030/commerce-sentinel-client/dashboard/by-url
