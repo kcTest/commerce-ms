@@ -81,22 +81,22 @@ public class SentinelGatewayConfig {
 	@PostConstruct
 	public void initRules() {
 		log.info("============================");
-		log.info("加载sentinel网关限流规则");
-		initGatewayRules();
+		//注释 使用json替代硬编码加载规则
+		//		log.info("加载sentinel网关限流规则");
+		//		initGatewayRules();
+		//		log.info("加载自定义sentinel网关限流分组");
+		//		initCustomizedApis();
 		log.info("加载自定义sentinel网关限流处理器");
 		initBlockHandlers();
-		log.info("加载自定义sentinel网关限流分组");
-		initCustomizedApis();
 		log.info("============================");
 	}
 	
 	/**
 	 * 硬编码网关限流规则
-	 * commerce-nc整个服务 60s内最多允许访问三次
 	 */
 	private void initGatewayRules() {
 		Set<GatewayFlowRule> rules = new HashSet<>();
-
+		//commerce-nc整个服务 60s内最多允许访问三次
 //		GatewayFlowRule flowRule = new GatewayFlowRule();
 //		//resourceMode：规则是针对 API Gateway 的 route（RESOURCE_MODE_ROUTE_ID）
 //		// 还是用户在 Sentinel 中定义的 API 分组（RESOURCE_MODE_CUSTOM_API_NAME），默认是 route。
@@ -158,7 +158,7 @@ public class SentinelGatewayConfig {
 	private void initCustomizedApis() {
 		Set<ApiDefinition> definitions = new HashSet<>();
 		
-		//限制commerce-nc的分组
+		//限制commerce-nc的分组 暂不使用
 		ApiDefinition def1 = new ApiDefinition("commerce-nc");
 		def1.setPredicateItems(new HashSet<ApiPredicateItem>() {
 			{

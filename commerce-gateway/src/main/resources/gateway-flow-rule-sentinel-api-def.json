@@ -1,0 +1,14 @@
+[
+  {
+    "apiName": "nacos-client-api",
+    "predicateItems": [
+      {
+        "pattern": "/gw/commerce-nc/nacos-client/**",
+        "matchStrategy": 1
+      },
+      {
+        "pattern": "/gw/commerce-nc/brave/trace-info"
+      }
+    ]
+  }
+] 
