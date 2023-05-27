@@ -31,12 +31,12 @@ spring:
     #-Dcsp.sentinel.dashboard.server=centos007:1028
     #-Dproject.name=commerce-sentinel-client 应用的名称显示在dashboard中
     #-Dcsp.sentinel.heartbeat.client.ip=192.168.1.3 指定心跳包中本机的 IP
-    #-Dcsp.sentinel.api.port=1031 客户端HttpServer端口
+    #-Dcsp.sentinel.api.port=1032 客户端HttpServer端口
     sentinel:
       transport:
         #在应用对应的机器上启动一个 Http Server，该 Server 会与 Sentinel 控制台做交互。
         #比如 Sentinel 控制台添加了一个限流规则，会把规则数据 push 给这个 Http Server 接收，Http Server 再将规则注册到 Sentinel 中。
-        port: 1031 #未指定默认使用8719++++
+        port: 1032 #未指定默认使用8719++++
         dashboard: centos007:1028
         clientIp: 192.168.1.3
       eager: true

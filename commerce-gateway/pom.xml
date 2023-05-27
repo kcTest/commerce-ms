@@ -83,9 +83,19 @@
             <groupId>io.zipkin.reporter2</groupId>
             <artifactId>zipkin-reporter-brave</artifactId>
         </dependency>
+        <!--        网关限流-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-datasource-nacos</artifactId>
+        </dependency>
+        <!--        添加如下启动参数即可标记应用为 API Gateway 类型： -Dcsp.sentinel.app.type=1-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>
         </dependency>
     </dependencies>
 
