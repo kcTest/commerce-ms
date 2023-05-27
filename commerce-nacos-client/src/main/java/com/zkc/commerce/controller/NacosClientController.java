@@ -25,4 +25,14 @@ public class NacosClientController {
 		log.info("coming in log nacos client info:[{}]", serviceId);
 		return nacosClientService.getNacosClientInfo(serviceId);
 	}
+	
+	/**
+	 * 根据service id 获取服务所有的实例信息
+	 */
+	@ResponseBody
+	@GetMapping("/service-instance2")
+	public List<ServiceInstance> logNacosClientInfo2(@RequestParam(defaultValue = "commerce-nc") String serviceId) {
+		log.info("coming in log nacos client info:[{}]", serviceId);
+		return nacosClientService.getNacosClientInfo(serviceId);
+	}
 }
