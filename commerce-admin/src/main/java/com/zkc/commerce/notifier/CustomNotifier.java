@@ -14,9 +14,9 @@ import reactor.core.publisher.Mono;
  */
 @Slf4j
 @Component
-public class CustomNotifuer extends AbstractEventNotifier {
+public class CustomNotifier extends AbstractEventNotifier {
 	
-	protected CustomNotifuer(InstanceRepository repository) {
+	protected CustomNotifier(InstanceRepository repository) {
 		super(repository);
 	}
 	
